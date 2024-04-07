@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<style>
+  html, body {
+    width: 400px;
+    height: 200px;
+    padding: 0 1rem;
+    overflow: scroll;
+  }
+  
+  table {
+    width: calc(100% - 2rem);
+    margin-bottom: 1rem;
+    border: 2px solid gray;
+    & thead {
+      background-color: ghostwhite;
+    }
+    & tbody tr {
+      border: 2px solid gray;
+      &:nth-child(even) {
+        background-color: ghostwhite;
+      }
+      & td {
+        display: flex;
+        align-items: center;
+        & img {
+          width: 20px;
+          height: 20px;
+          margin-right: 4px;
+        }
+        & a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+  }
+</style>
+<body>
+  <h1>your work is "DEKAI" !</h1>
+  <script type="module" src="./popup.js"></script>
+</body>
+</html>

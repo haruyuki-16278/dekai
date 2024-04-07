@@ -3,7 +3,25 @@
   "description": "extension for logging your browse",
   "version": "0.0.0",
   "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "commands": {
+    "log": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+1",
+        "mac": "MacCtrl+Shift+1"
+      },
+      "description": "Run extension."
+    }
   }
 }
