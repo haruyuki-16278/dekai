@@ -1,43 +1,80 @@
 <!DOCTYPE html>
 <html>
-<style>
-  html, body {
-    width: 400px;
-    height: 200px;
-    padding: 0 1rem;
-    overflow: scroll;
-  }
-  
-  table {
-    width: calc(100% - 2rem);
-    margin-bottom: 1rem;
-    border: 2px solid gray;
-    & thead {
-      background-color: ghostwhite;
-    }
-    & tbody tr {
-      border: 2px solid gray;
-      &:nth-child(even) {
-        background-color: ghostwhite;
+  <head>
+    <script type="module" src="./popup.js"></script>
+    <style>
+      html {
+        max-width: 400px;
+        max-height: 200px;
       }
-      & td {
+
+      body {
+        margin: 0;
+        padding: 0 1rem;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+
+      div.title-container {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        & img {
-          width: 20px;
-          height: 20px;
-          margin-right: 4px;
+      }
+
+      table {
+        margin-bottom: 1rem;
+        border: 2px solid gray;
+        & thead {
+          background-color: ghostwhite;
         }
-        & a {
-          text-decoration: none;
-          color: black;
+        & tbody tr {
+          border: 2px solid gray;
+          &:nth-child(even) {
+            background-color: ghostwhite;
+          }
+          & td {
+            max-width: 300px;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            & img {
+              width: 20px;
+              height: 20px;
+              margin-right: 4px;
+            }
+            & a {
+              text-decoration: none;
+              color: black;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
         }
       }
-    }
-  }
-</style>
-<body>
-  <h1>your work is "DEKAI" !</h1>
-  <script type="module" src="./popup.js"></script>
-</body>
+    </style>
+  </head>
+  <body>
+    <div class="title-container">
+      <h1>your work is "DEKAI" !</h1>
+      <button id="copyToClipboard">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+        >
+          <path
+            d="M7.024 3.75c0-.966.784-1.75 1.75-1.75H20.25c.966 0 1.75.784 1.75 1.75v11.498a1.75 1.75 0 0 1-1.75 1.75H8.774a1.75 1.75 0 0 1-1.75-1.75Zm1.75-.25a.25.25 0 0 0-.25.25v11.498c0 .139.112.25.25.25H20.25a.25.25 0 0 0 .25-.25V3.75a.25.25 0 0 0-.25-.25Z"
+          ></path>
+          <path
+            d="M1.995 10.749a1.75 1.75 0 0 1 1.75-1.751H5.25a.75.75 0 1 1 0 1.5H3.745a.25.25 0 0 0-.25.25L3.5 20.25c0 .138.111.25.25.25h9.5a.25.25 0 0 0 .25-.25v-1.51a.75.75 0 1 1 1.5 0v1.51A1.75 1.75 0 0 1 13.25 22h-9.5A1.75 1.75 0 0 1 2 20.25l-.005-9.501Z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </body>
 </html>
