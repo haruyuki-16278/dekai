@@ -35,7 +35,7 @@ items
   });
 
 if (items.length > 5) {
-  const more = document.createElement("p");
+  const more = document.createElement("span");
   more.textContent = "and more...";
   document.body.appendChild(more);
 }
