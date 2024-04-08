@@ -1,20 +1,6 @@
 import { IndexedDB } from "./IndexedDB/IndexedDB.js";
 import { dbname, dbcolumns } from "./utils/db.config.js";
 
-async function log() {
-  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  console.log(tab.url, tab.title, tab.favIconUrl);
-  const db = await IndexedDB.create(dbname, dbcolumns);
-  const item = {
-    time: new Date().getTime(),
-    iconUrl: tab.favIconUrl,
-    title: tab.title,
-    url: tab.url,
-  };
-  db.add(item);
-  updateBadge();
-}
-
 async function updateBadge() {
   const db = await IndexedDB.create(dbname, dbcolumns);
   const now = new Date();
@@ -30,6 +16,20 @@ async function updateBadge() {
   chrome.action.setBadgeBackgroundColor({
     color: "#B4E9FF",
   });
+}
+
+async function log() {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  console.log(tab.url, tab.title, tab.favIconUrl);
+  const db = await IndexedDB.create(dbname, dbcolumns);
+  const item = {
+    time: new Date().getTime(),
+    iconUrl: tab.favIconUrl,
+    title: tab.title,
+    url: tab.url,
+  };
+  db.add(item);
+  updateBadge();
 }
 
 chrome.commands.onCommand.addListener(async (command) => {
