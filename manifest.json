@@ -5,7 +5,8 @@
   "manifest_version": 3,
   "permissions": ["activeTab", "scripting", "storage"],
   "action": {
-    "default_popup": "popup/popup.html"
+    "default_popup": "popup/popup.html",
+    "default_title": "dekai"
   },
   "background": {
     "service_worker": "background.js",
