@@ -20,5 +20,11 @@
       },
       "description": "Run extension."
     }
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content-script.js"]
+    }
+  ]
 }

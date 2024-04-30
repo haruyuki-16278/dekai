@@ -30,7 +30,17 @@ items
     timecol.textContent = new Date(item.time).toLocaleString();
     tableRow.appendChild(timecol);
     const linkcol = document.createElement("td");
-    linkcol.innerHTML = `<img src="${item.iconUrl}"/><a href="${item.url}">${item.title}</a>`;
+    const favicon = document.createElement("img");
+    favicon.src = item.iconUrl;
+    const linktext = document.createElement("a");
+    linktext.href = item.url;
+    console.log(item.marked);
+    linktext.innerHTML =
+      item.marked?.length > 0
+        ? `<span style="font-style: italic">${item.marked}</span><br><span style="color: gray; text-decoration: underline">${item.title}</span>`
+        : item.title;
+    linkcol.appendChild(favicon);
+    linkcol.appendChild(linktext);
     tableRow.appendChild(linkcol);
   });
 
@@ -52,7 +62,9 @@ document
     console.log(items.length);
     let text = "";
     items.forEach((item) => {
-      text += `- [${item.title}](${item.url})\n`;
+      text += item.marked
+        ? `- 「${item.marked}」（[${item.title}](${item.url})）`
+        : `- [${item.title}](${item.url})\n`;
     });
     console.log(text);
     await navigator.clipboard.writeText(text);
