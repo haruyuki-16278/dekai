@@ -1,7 +1,7 @@
 {
   "name": "dekai",
   "description": "extension for logging your browse",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "manifest_version": 3,
   "permissions": ["activeTab", "scripting", "storage"],
   "action": {
