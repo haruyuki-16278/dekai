@@ -6,7 +6,8 @@
   "permissions": ["activeTab", "scripting", "storage"],
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "dekai"
+    "default_title": "dekai",
+    "default_icon": "assets/icon-32.png"
   },
   "background": {
     "service_worker": "background.js",
