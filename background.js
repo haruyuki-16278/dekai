@@ -22,9 +22,16 @@ async function updateBadge() {
 
 async function log() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  console.log(tab.url, tab.title, tab.favIconUrl);
-  console.log(selectedText);
   const db = await IndexedDB.create(dbname, dbcolumns);
+  await chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: async () => {
+      await chrome.runtime.sendMessage({
+        message: window.getSelection().toString(),
+      });
+    },
+  });
+  console.log(selectedText);
   const item = {
     time: new Date().getTime(),
     iconUrl: tab.favIconUrl,
@@ -42,7 +49,6 @@ chrome.commands.onCommand.addListener(async (command) => {
 
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-  console.log(message.message);
   if (sender.tab.id === tab.id) {
     selectedText = message.message;
   }
