@@ -3,7 +3,7 @@
   "description": "extension for logging your browse",
   "version": "1.0.0",
   "manifest_version": 3,
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup/popup.html",
     "default_title": "dekai",
